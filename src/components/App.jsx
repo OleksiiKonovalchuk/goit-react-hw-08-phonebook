@@ -13,7 +13,7 @@ const PrivateRoute = lazy(() => import('./modules/PrivateRoutes/PrivateRoute'));
 const PublicRoute = lazy(() => import('./modules/PublicRoute/PublicRoute'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
-const Contacts = lazy(() => import('./modules/contacts/Contacts'));
+const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 
 const App = () => {
   return (
@@ -30,7 +30,7 @@ const App = () => {
                 </Route>
 
                 <Route element={<PrivateRoute />}>
-                  <Route path="/contacts" element={<Contacts />} />
+                  <Route path="/contacts" element={<ContactsPage />} />
                 </Route>
               </Routes>
             </Suspense>

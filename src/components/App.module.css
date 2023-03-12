@@ -1,9 +1,9 @@
 .App {
-  /* height: 100vh; */
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-size: 40px;
   color: #010101;
+  background: linear-gradient(rgb(12, 49, 169), rgb(204, 212, 121));
 }

@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/auth-operations';
 import { getUser } from 'redux/auth/auth-selectors';
-import Button from 'shared/components/button/Button';
 import css from './userMenu.module.scss';
 
 const UserMenu = () => {
@@ -15,7 +14,9 @@ const UserMenu = () => {
   return (
     <div className={css.wrapper}>
       {name && <h3 className={css.header}>{name}</h3>}
-      <Button onClick={onLogout}>Logout</Button>
+      <button className={css.btn} onClick={onLogout}>
+        Logout
+      </button>
     </div>
   );
 };

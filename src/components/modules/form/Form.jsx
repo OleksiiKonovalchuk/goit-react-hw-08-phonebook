@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import css from './form.module.css';
+import css from './form.module.scss';
 import { useDispatch } from 'react-redux';
 import { fetchAddContact } from 'redux/contacts/contact-operations';
 

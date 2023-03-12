@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
 }
+.list {
+  padding-left: 0;
+}
 .item:not(:last-child) {
   margin-bottom: 10px;
 }
@@ -20,10 +23,17 @@
   display: inline-block;
 }
 .button {
-  display: block;
-  background-color: transparent;
-  padding: 2px 7px;
   margin-left: 20px;
-  border-radius: 3px;
-  border: 1px solid rgb(187, 182, 182);
+  background-color: transparent;
+  color: purple;
+  border: 1px solid purple;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+  transition: all linear 250ms;
+  &:hover {
+    background-color: purple;
+    color: #fff;
+  }
 }
