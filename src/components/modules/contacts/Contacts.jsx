@@ -6,6 +6,8 @@ import {
   fetchAllContacts,
   fetchDeleteContact,
 } from 'redux/contacts/contact-operations';
+import Form from 'components/modules/form/Form';
+import Filter from 'components/modules/filter/Filter';
 import css from './contacts.module.css';
 
 const Contacts = () => {
@@ -41,6 +43,10 @@ const Contacts = () => {
   }, [dispatch]);
   return (
     <>
+      <h1>Phonebook</h1>
+      <Form />
+      <h2>Contacts</h2>
+      <Filter />
       {isLoading && <p>Loading...</p>}
       <ul className={css.list}>{elements}</ul>
     </>

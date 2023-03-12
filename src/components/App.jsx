@@ -1,21 +1,42 @@
 import { Provider } from 'react-redux';
-import store from 'redux/store';
+import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import { store, persistor } from 'redux/store';
 
 import css from './App.module.css';
-import Form from './form/Form';
-import Contacts from './contacts/Contacts';
-import Filter from './filter/Filter';
+import AuthWrapper from './authWrapper/AuthWrapper';
+import NavBar from './navBar/NavBar';
+
+const PrivateRoute = lazy(() => import('./modules/PrivateRoutes/PrivateRoute'));
+const PublicRoute = lazy(() => import('./modules/PublicRoute/PublicRoute'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
+const Contacts = lazy(() => import('./modules/contacts/Contacts'));
 
 const App = () => {
   return (
     <Provider store={store}>
-      <div className={css.App}>
-        <h1>Phonebook</h1>
-        <Form />
-        <h2>Contacts</h2>
-        <Filter />
-        <Contacts />
-      </div>
+      <PersistGate loading={null} persistor={persistor}>
+        <AuthWrapper>
+          <div className={css.App}>
+            <NavBar />
+            <Suspense fallback={<p>...Loading page</p>}>
+              <Routes>
+                <Route element={<PublicRoute />}>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/registration" element={<RegisterPage />} />
+                </Route>
+
+                <Route element={<PrivateRoute />}>
+                  <Route path="/contacts" element={<Contacts />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </div>
+        </AuthWrapper>
+      </PersistGate>
     </Provider>
   );
 };
